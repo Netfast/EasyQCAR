@@ -1,1 +1,7 @@
+EasyQCAR is an easy wrapper for Augmented Reality (Vuforia) from Qualcomm.
+
+The milestone target is a to make it a nice library for Processing.org.
+
+Vuforia 1.5.9 and Processing.org for Android are included, so you need nothing else to start with.
+
 vinjn.z@gmail.com
