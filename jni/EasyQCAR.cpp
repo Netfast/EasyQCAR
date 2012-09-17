@@ -1,8 +1,6 @@
 ﻿/*==============================================================================
-            Copyright (c) 2012 SNDA Innotiative.
-            All Rights Reserved.
-            SNDA Confidential and Proprietary
-            
+@author
+    Vinjn Zhang ( vinjn.z@gmail.com) 
 @file 
     EasyQCAR.cpp
 
@@ -58,7 +56,7 @@ QCAR::DataSet* g_dataSet    = 0;
   
 
 JNIEXPORT int JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_getOpenGlEsVersionNative(JNIEnv *, jobject)
+Java_com_vmstudio_EasyQCAR_getOpenGlEsVersionNative(JNIEnv *, jobject)
 {
 #ifdef USE_OPENGL_ES_1_1        
     return 1;
@@ -68,14 +66,14 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_getOpenGlEsVersionNative(JNIEnv *, jobject)
 }
 
 // JNIEXPORT void JNICALL
-// Java_com_robopeak_EasyQCAR_EasyQCAR_setActivityPortraitMode(JNIEnv *, jobject, jboolean isPortrait)
+// Java_com_vmstudio_EasyQCAR_setActivityPortraitMode(JNIEnv *, jobject, jboolean isPortrait)
 // {
     // isActivityInPortraitMode = isPortrait;
 // }
   
 
 JNIEXPORT int JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_create(JNIEnv* env, jobject, jstring trackerXml)
+Java_com_vmstudio_EasyQCAR_create(JNIEnv* env, jobject, jstring trackerXml)
 {
     LOGI("EasyQCAR_create");
     
@@ -124,7 +122,7 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_create(JNIEnv* env, jobject, jstring tracker
 
 
 JNIEXPORT int JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_destroy(JNIEnv *, jobject)
+Java_com_vmstudio_EasyQCAR_destroy(JNIEnv *, jobject)
 {
     LOGI("EasyQCAR_destroy");
 
@@ -170,7 +168,7 @@ QCAR::State g_state;
 bool qcar_begun = false;
 
 JNIEXPORT void JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_begin(JNIEnv *, jobject)
+Java_com_vmstudio_EasyQCAR_begin(JNIEnv *, jobject)
 {
     // LOGI("+++++++++++++++++++++++++++++++++++++++");
     // Get the state from QCAR and mark the beginning of a rendering section
@@ -180,7 +178,7 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_begin(JNIEnv *, jobject)
 }
 
 JNIEXPORT void JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_drawBackground(JNIEnv *, jobject)
+Java_com_vmstudio_EasyQCAR_drawBackground(JNIEnv *, jobject)
 {  
     // LOGI("----------------------------------------");
     // Explicitly render the Video Background
@@ -188,7 +186,7 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_drawBackground(JNIEnv *, jobject)
 }
 
 JNIEXPORT void JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_end(JNIEnv *, jobject)
+Java_com_vmstudio_EasyQCAR_end(JNIEnv *, jobject)
 {
     if (qcar_begun)
     {
@@ -202,7 +200,7 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_end(JNIEnv *, jobject)
 }
 
 JNIEXPORT int JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_getNumActiveTrackables(JNIEnv *, jobject)
+Java_com_vmstudio_EasyQCAR_getNumActiveTrackables(JNIEnv *, jobject)
 {
     if (qcar_begun)
         return g_state.getNumActiveTrackables();
@@ -213,7 +211,7 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_getNumActiveTrackables(JNIEnv *, jobject)
 const int MAT_SIZE = 16;
     
 JNIEXPORT jfloatArray JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_getProjectioMatrix(JNIEnv* env, jobject)
+Java_com_vmstudio_EasyQCAR_getProjectioMatrix(JNIEnv* env, jobject)
 {
     jfloatArray array = env->NewFloatArray(MAT_SIZE);
     env->SetFloatArrayRegion(array, 0, MAT_SIZE, projectionMatrix.data);
@@ -221,7 +219,7 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_getProjectioMatrix(JNIEnv* env, jobject)
 }
 
 JNIEXPORT jfloatArray JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_getModelViewMatrix(JNIEnv* env, jobject, jint tIdx)
+Java_com_vmstudio_EasyQCAR_getModelViewMatrix(JNIEnv* env, jobject, jint tIdx)
 {
     if (!qcar_begun)
         return NULL;
@@ -234,7 +232,7 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_getModelViewMatrix(JNIEnv* env, jobject, jin
 }
 
 JNIEXPORT jstring JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_getName(JNIEnv* env, jobject, jint tIdx)
+Java_com_vmstudio_EasyQCAR_getName(JNIEnv* env, jobject, jint tIdx)
 {
     if (!qcar_begun)
         return NULL;
@@ -298,7 +296,7 @@ configureVideoBackground()
 
 
 JNIEXPORT void JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_setScreenSize(
+Java_com_vmstudio_EasyQCAR_setScreenSize(
                             JNIEnv* env, jobject obj, jint width, jint height)
 {
     LOGI("EasyQCAR_setScreenSize (%d, %d)", width, height); 
@@ -308,7 +306,7 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_setScreenSize(
 }
 
 JNIEXPORT void JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_resume(JNIEnv *, jobject)
+Java_com_vmstudio_EasyQCAR_resume(JNIEnv *, jobject)
 {
     LOGI("EasyQCAR_resume");
 
@@ -343,7 +341,7 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_resume(JNIEnv *, jobject)
 
 
 JNIEXPORT void JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_pause(JNIEnv *,jobject)
+Java_com_vmstudio_EasyQCAR_pause(JNIEnv *,jobject)
 {
     LOGI("EasyQCAR_pause");
 
@@ -358,19 +356,19 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_pause(JNIEnv *,jobject)
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_toggleFlash(JNIEnv*, jobject, jboolean flash)
+Java_com_vmstudio_EasyQCAR_toggleFlash(JNIEnv*, jobject, jboolean flash)
 {
     return QCAR::CameraDevice::getInstance().setFlashTorchMode((flash==JNI_TRUE)) ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_autofocus(JNIEnv*, jobject)
+Java_com_vmstudio_EasyQCAR_autofocus(JNIEnv*, jobject)
 {
 	return QCAR::CameraDevice::getInstance().setFocusMode(QCAR::CameraDevice::FOCUS_MODE_TRIGGERAUTO) ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_setFocusMode(JNIEnv*, jobject, jint mode)
+Java_com_vmstudio_EasyQCAR_setFocusMode(JNIEnv*, jobject, jint mode)
 {
 	int qcarFocusMode;
 
@@ -401,7 +399,7 @@ Java_com_robopeak_EasyQCAR_EasyQCAR_setFocusMode(JNIEnv*, jobject, jint mode)
 
 
 JNIEXPORT void JNICALL
-Java_com_robopeak_EasyQCAR_EasyQCAR_surfaceChanged(
+Java_com_vmstudio_EasyQCAR_surfaceChanged(
                         JNIEnv* env, jobject obj, jint width, jint height)
 {
     LOGI("EasyQCAR_surfaceChanged");

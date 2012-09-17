@@ -1,4 +1,4 @@
-package com.robopeak.EasyQCAR;
+package com.vmstudio;
 
 import android.app.Activity;
 

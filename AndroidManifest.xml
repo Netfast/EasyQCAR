@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.robopeak.EasyQCAR.sample"
+    package="com.vmstudio.ArSample"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -12,7 +12,7 @@
         <activity
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
-            android:name=".ProQCARActivity" >
+            android:name=".SampleActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 

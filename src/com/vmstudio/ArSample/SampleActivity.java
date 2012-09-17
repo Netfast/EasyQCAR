@@ -1,12 +1,12 @@
-package com.robopeak.EasyQCAR.sample;
+package com.vmstudio.ArSample;
 
 import processing.core.PApplet;
 import android.os.Bundle;
 
 import com.qualcomm.ar.pl.DebugLog;
-import com.robopeak.EasyQCAR.EasyQCAR;
+import com.vmstudio.EasyQCAR;
 
-public class ProQCARActivity extends PApplet {
+public class SampleActivity extends PApplet {
 
 	EasyQCAR qcar = new EasyQCAR();
 
@@ -36,10 +36,10 @@ public class ProQCARActivity extends PApplet {
 	public void draw() {
 		qcar.begin();
 		qcar.drawBackground();
-		int n_tracked = qcar.getNumActiveTrackables();
 		float[] prj = qcar.getProjectioMatrix();
 
-		for (int i = 0; i < n_tracked; i++) {
+		for (int i = 0; i < qcar.getNumActiveTrackables(); i++) {
+			DebugLog.LOGD("qcar", qcar.getName(i));
 			float[] modelView = qcar.getModelViewMatrix(i);
 			DebugLog.LOGD("qcar", modelView.toString());
 		}
