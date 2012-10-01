@@ -20,7 +20,7 @@
 #include <android/log.h>
 
 // Utility for logging:
-#define LOG_TAG    "EazyQCAR"
+#define LOG_TAG    "EazyQCAR_jni"
 #define LOG(...)  __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #define LOGI(...)  __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
 #define LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)

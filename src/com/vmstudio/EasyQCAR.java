@@ -3,7 +3,6 @@ package com.vmstudio;
 import android.app.Activity;
 
 import com.qualcomm.QCAR.QCAR;
-import com.qualcomm.ar.pl.DebugLog;
 
 public class EasyQCAR {
 	/** Native tracker initialization and deinitialization. */
@@ -52,8 +51,6 @@ public class EasyQCAR {
 		loadLibrary("EasyQCAR");
 	}
 
-	final static String tag = "EasyQCAR";
-	
 	//TODO: add to onResume()
 	public void onSurfaceCreated() {
 		// Call QCAR function to (re)initialize rendering after first use
@@ -65,13 +62,13 @@ public class EasyQCAR {
 	private static boolean loadLibrary(String nLibName) {
 		try {
 			System.loadLibrary(nLibName);
-			DebugLog.LOGI(tag, "Native library lib" + nLibName + ".so loaded");
+			DebugLog.LOGI("Native library lib" + nLibName + ".so loaded");
 			return true;
 		} catch (UnsatisfiedLinkError ulee) {
-			DebugLog.LOGE(tag, "The library lib" + nLibName
+			DebugLog.LOGE("The library lib" + nLibName
 					+ ".so could not be loaded");
 		} catch (SecurityException se) {
-			DebugLog.LOGE(tag, "The library lib" + nLibName
+			DebugLog.LOGE("The library lib" + nLibName
 					+ ".so was not allowed to be loaded");
 		}
 
@@ -92,7 +89,7 @@ public class EasyQCAR {
 			// Initialization is done when progress has reached 100%.
 			mProgressValue = QCAR.init();
 
-			DebugLog.LOGD(tag, "QCAR.init Progress [" + mProgressValue + "/100]");
+			DebugLog.LOGD("QCAR.init Progress [" + mProgressValue + "/100]");
 
 			// We check whether the task has been canceled in the meantime
 			// (by calling AsyncTask.cancel(true))
@@ -105,10 +102,10 @@ public class EasyQCAR {
 		// not supported. At this point the user should be informed
 		// with a message.
 		if (mProgressValue == QCAR.INIT_DEVICE_NOT_SUPPORTED) {
-			DebugLog.LOGD(tag, "Failed to initialize QCAR because this "
+			DebugLog.LOGD("Failed to initialize QCAR because this "
 					+ "device is not supported.");
 		} else if (mProgressValue == QCAR.INIT_ERROR) {
-			DebugLog.LOGD(tag, "Failed to initialize QCAR.");
+			DebugLog.LOGD("Failed to initialize QCAR.");
 		}
 
 		setScreenSize(width, height);
